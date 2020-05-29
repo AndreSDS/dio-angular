@@ -5,37 +5,9 @@
       <mat-card-content>
           <app-input-text titulo="Título *" [formGroup]="cadastro" controlName="titulo" ></app-input-text>
           <app-input-text titulo="Link Foto" [formGroup]="cadastro" controlName="urlFoto" ></app-input-text>
-
-          <mat-form-field class="full-width">
-            <input 
-              matInput 
-              [matDatepicker]="picker"
-              placeholder="Data de Lançamento" 
-              name="dtLancamento" 
-              formControlName="dtLancamento"
-              readonly
-              (click)="picker.open()">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            <mat-error *ngIf="validacao.hasErrorValidate(f.dtLancamento,'required')">Campo Obrigatório</mat-error>
-            </mat-form-field>
-          
+          <app-input-date titulo="Data de lançamento *" [formGroup]="cadastro" controlName="dtLancamento" ></app-input-date>
           <app-input-text-area titulo="Descrição" [formGroup]="cadastro" controlName="descricao" ></app-input-text-area>
-          
-          <mat-form-field class="full-width">
-            <input 
-            matInput 
-            placeholder="Nota IMDb" 
-            name="nota" formControlName="nota"
-            type="number"
-            min="0"
-            max="10"
-            step="0.1">
-            <mat-error *ngIf="validacao.hasErrorValidate(f.nota,'required')">Campo Obrigatório</mat-error>
-            <mat-error *ngIf="validacao.hasErrorValidate(f.nota, 'minlength')">Nota mínima 0</mat-error>
-            <mat-error *ngIf="validacao.hasErrorValidate(f.nota, 'maxlength')">Nota mínima 10</mat-error>
-          </mat-form-field>
-          
+          <app-input-number titulo="Nota IMDb *" [formGroup]="cadastro" controlName="nota" step="0.1"></app-input-number>
           <app-input-text titulo="Link IMDb" [formGroup]="cadastro" controlName="urlIMDb" ></app-input-text>
           
           <mat-form-field class="full-width">
