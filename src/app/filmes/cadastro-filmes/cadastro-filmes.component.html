@@ -6,6 +6,9 @@
 
           <mat-form-field class="full-width">
             <input matInput placeholder="Título" name="titulo" formControlName="titulo">
+            <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.titulo.errors && f.titulo.errors.required">Campo Obrigatório</mat-error>
+            <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.titulo.errors && f.titulo.errors.minlength">Minímo 2 caracteres</mat-error>
+            <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.titulo.errors && f.titulo.errors.maxlength">Máximo 100 caracteres</mat-error>
           </mat-form-field>
           
           <mat-form-field class="full-width">
@@ -13,7 +16,14 @@
           </mat-form-field>
 
           <mat-form-field class="full-width">
-              <input matInput [matDatepicker]="picker" placeholder="Data de Lançamento" name="dtLancamento" formControlName="dtLancamento">
+              <input 
+              matInput 
+              [matDatepicker]="picker" 
+              placeholder="Data de Lançamento" 
+              name="dtLancamento" 
+              formControlName="dtLancamento"
+              readonly
+              (click)="picker.open()">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
@@ -50,8 +60,8 @@
         </mat-card-content>
         
         <mat-card-actions>
-          <button color="accent" mat-raised-button>Salvar</button>
-          <button color="warn" mat-raised-button>Cancelar</button>
+          <button type="submit" color="accent" mat-raised-button>Salvar</button>
+          <button type="reset" color="warn" mat-raised-button>Cancelar</button>
         </mat-card-actions>
       </form> 
     </mat-card> 
