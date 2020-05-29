@@ -20,9 +20,7 @@
             <mat-error *ngIf="validacao.hasErrorValidate(f.dtLancamento,'required')">Campo Obrigatório</mat-error>
             </mat-form-field>
           
-          <mat-form-field class="full-width">
-            <textarea matInput placeholder="Descrição" name="descricacao" formControlName="descricao"></textarea>
-          </mat-form-field>
+          <app-input-text-area titulo="Descrição" [formGroup]="cadastro" controlName="descricao" ></app-input-text-area>
           
           <mat-form-field class="full-width">
             <input 
