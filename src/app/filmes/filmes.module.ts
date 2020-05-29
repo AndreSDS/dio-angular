@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { CamposModule } from './../shared/components/campos/campos.module';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -12,7 +13,9 @@ import { ListagemFilmesComponent } from './listagem-filmes/listagem-filmes.compo
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+    CamposModule
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   declarations: [CadastroFilmesComponent, ListagemFilmesComponent]
 })
 export class FilmesModule { }
