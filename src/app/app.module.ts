@@ -1,18 +1,16 @@
+import { NgModule } from '@angular/core';
 import { MaterialModule } from './shared/material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { LayoutModule } from '@angular/cdk/layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { LayoutModule } from '@angular/cdk/layout';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
-
-import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
-
-import { TopoComponent } from './shared/components/topo/topo.component';
-import { RodapeComponent } from './shared/components/rodape/rodape.component';
-
 import { FilmesModule } from './filmes/filmes.module';
 
+import { AppComponent } from './app.component';
+import { TopoComponent } from './shared/components/topo/topo.component';
+import { RodapeComponent } from './shared/components/rodape/rodape.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +21,7 @@ import { FilmesModule } from './filmes/filmes.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     LayoutModule,
     AppRoutingModule,
     MaterialModule,
