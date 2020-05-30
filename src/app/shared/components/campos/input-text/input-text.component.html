@@ -10,10 +10,10 @@
       >Campo obrigatório</mat-error
     >
     <mat-error *ngIf="validacao.hasErrorValidate(formControl, 'minlength')"
-      >Campo obrigatório</mat-error
+      >Campo precisa ter no mínimo {{ validacao.lengthValidar(formControl, 'minlength') }}</mat-error
     >
     <mat-error *ngIf="validacao.hasErrorValidate(formControl, 'maxlength')"
-      >Campo obrigatório</mat-error
+      >Campo precisa ter no máximo {{ validacao.lengthValidar(formControl, 'maxlength') }}</mat-error
     >
   </mat-form-field>
 </div>

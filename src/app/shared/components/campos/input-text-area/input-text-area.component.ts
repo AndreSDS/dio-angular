@@ -13,7 +13,7 @@ export class InputTextAreaComponent implements OnInit {
   @Input() controlName: string;
   @Input() titulo: string;
 
-  constructor( private validacao: ValidacaoService) { }
+  constructor( public validacao: ValidacaoService) { }
 
   ngOnInit(): void {
   }

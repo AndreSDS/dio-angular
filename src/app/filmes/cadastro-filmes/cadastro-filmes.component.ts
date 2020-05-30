@@ -10,7 +10,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class CadastroFilmesComponent implements OnInit {
 
   cadastro: FormGroup;
-
+  generos: Array<string>;
+  
   constructor(
     public validacao: ValidacaoService,
     private fb: FormBuilder) { }
@@ -30,6 +31,8 @@ export class CadastroFilmesComponent implements OnInit {
       urlIMDb: ['', [Validators.minLength(10)]],
       genero: ['', [Validators.required]]
     });
+
+    this.generos = ['Ação', 'Romance', 'Terror', 'Aventura', 'Ficção científica', 'Comédia', 'Drama'];
   }
 
   salvar(): void {

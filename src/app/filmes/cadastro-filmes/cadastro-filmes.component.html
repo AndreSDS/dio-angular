@@ -1,7 +1,7 @@
 <mat-toolbar class="app-title">Cadastrar Filme</mat-toolbar>
 <div class="main-div">
   <mat-card class="center width50" >
-    <form [formGroup]="cadastro" (ngSubmit)="salvar()" (ngReset)="resetar()" >
+    <form autocomplete="off" novalidate [formGroup]="cadastro" (ngSubmit)="salvar()" (ngReset)="resetar()" >
       <mat-card-content>
           <app-input-text titulo="Título *" [formGroup]="cadastro" controlName="titulo" ></app-input-text>
           <app-input-text titulo="Link Foto" [formGroup]="cadastro" controlName="urlFoto" ></app-input-text>
@@ -9,18 +9,7 @@
           <app-input-text-area titulo="Descrição" [formGroup]="cadastro" controlName="descricao" ></app-input-text-area>
           <app-input-number titulo="Nota IMDb *" [formGroup]="cadastro" controlName="nota" step="0.1"></app-input-number>
           <app-input-text titulo="Link IMDb" [formGroup]="cadastro" controlName="urlIMDb" ></app-input-text>
-          
-          <mat-form-field class="full-width">
-            <mat-select placeholder="Gênero" name="genero" formControlName="genero">
-              <mat-option value="Ação">Açao</mat-option>
-              <mat-option value="Aventura">Aventura</mat-option>
-              <mat-option value=">Ficção Científica">Ficção Científica</mat-option>
-              <mat-option value="Romance">Romance</mat-option>
-              <mat-option value="Terror">Terror</mat-option>
-            </mat-select>
-            <mat-error *ngIf="validacao.hasErrorValidate(f.genero,'required')">Campo Obrigatório</mat-error>
-          </mat-form-field>
-        
+          <app-input-select titulo="Gênero *" [opcoes]="generos" [formGroup]="cadastro" controlname="genero" ></app-input-select>
         </mat-card-content>
         
         <mat-card-actions>
