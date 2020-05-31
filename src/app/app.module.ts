@@ -11,12 +11,14 @@ import { FilmesModule } from './filmes/filmes.module';
 import { AppComponent } from './app.component';
 import { TopoComponent } from './shared/components/topo/topo.component';
 import { RodapeComponent } from './shared/components/rodape/rodape.component';
+import { AlertaComponent } from './shared/components/alerta/alerta.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopoComponent,
     RodapeComponent,
+    AlertaComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,7 @@ import { RodapeComponent } from './shared/components/rodape/rodape.component';
     MaterialModule,
     FilmesModule
   ],
+  entryComponents: [AlertaComponent],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt' }],
   bootstrap: [AppComponent]
 })

@@ -1,8 +1,10 @@
+import { AlertaComponent } from './../../shared/components/alerta/alerta.component';
 import { FilmesService } from './../../core/filmes.service';
 import { Filme } from './../../shared/models/filme';
 import { ValidacaoService } from './../../shared/components/campos/validacao.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'dio-cadastro-filmes',
@@ -13,8 +15,9 @@ export class CadastroFilmesComponent implements OnInit {
 
   cadastro: FormGroup;
   generos: Array<string>;
-  
+
   constructor(
+    public dialog: MatDialog,
     public validacao: ValidacaoService,
     private fb: FormBuilder,
     private filmeService: FilmesService) { }
@@ -53,7 +56,7 @@ export class CadastroFilmesComponent implements OnInit {
 
   private salvar(filme: Filme): void{
     this.filmeService.salvar(filme).subscribe(() => {
-      alert('Sucesso');
+      const dialogRef = this.dialog.open(AlertaComponent);
       this.resetar();
     },
     () => {
