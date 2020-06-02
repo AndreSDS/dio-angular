@@ -1,11 +1,12 @@
-import { Alerta } from './../../shared/models/alerta';
-import { AlertaComponent } from './../../shared/components/alerta/alerta.component';
-import { FilmesService } from './../../core/filmes.service';
-import { Filme } from './../../shared/models/filme';
-import { ValidacaoService } from './../../shared/components/campos/validacao.service';
-import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FilmesService } from './../../core/filmes.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Filme } from './../../shared/models/filme';
+import { Alerta } from './../../shared/models/alerta';
+import { ValidacaoService } from './../../shared/components/campos/validacao.service';
+import { AlertaComponent } from './../../shared/components/alerta/alerta.component';
 
 @Component({
   selector: 'dio-cadastro-filmes',
@@ -21,7 +22,8 @@ export class CadastroFilmesComponent implements OnInit {
     public dialog: MatDialog,
     public validacao: ValidacaoService,
     private fb: FormBuilder,
-    private filmeService: FilmesService) { }
+    private filmeService: FilmesService,
+    private router: Router) { }
 
   get f() {
     return this.cadastro.controls;
@@ -65,12 +67,25 @@ export class CadastroFilmesComponent implements OnInit {
           possuiBtnFechar: true
         } as Alerta
       };
-      const dialogRef = this.dialog.open(AlertaComponent);
-      this.resetar();
+      const dialogRef = this.dialog.open(AlertaComponent, config);
+      dialogRef.afterClosed().subscribe((opcao: boolean) => {
+        if (opcao) {
+          this.router.navigateByUrl('filmes');
+        } else {
+          this.resetar();
+        }
+      });
     },
     () => {
-      alert('Erro ao salvar');
+      const config = {
+        data: {
+          titulo: 'Erro ao salvar.',
+          descrição: 'Não conseguimos salvar. Favor tentar novamente mais tarde.',
+          btnSucesso: 'Fechar',
+          corBtn: 'warn'
+        } as Alerta
+      };
+      this.dialog.open(AlertaComponent, config);
     });
   }
-
 }

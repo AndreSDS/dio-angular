@@ -14,14 +14,14 @@ export class AlertaComponent implements OnInit {
     descricao: 'Cadastro efetuado com sucesso.',
     btnSucesso: 'Ok',
     btnClose: 'Cancelar',
-    corBtn: 'primary',
+    corBtn: 'accent',
     corBtnCancel: 'warn',
     possuiBtnFechar: false
 } as Alerta;
 
   constructor(
     public dialogRef: MatDialogRef<AlertaComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any ) { }
+    @Inject(MAT_DIALOG_DATA) public data: Alerta ) { }
 
   ngOnInit(): void {
     if (this.data) {
