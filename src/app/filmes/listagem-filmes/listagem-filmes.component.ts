@@ -9,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListagemFilmesComponent implements OnInit {
 
-  filmes: Filme[];
+  filmes: Filme[] = [];
+  pagina = 0;
+  readonly itensPorPagina = 4;
 
   constructor(
     private filemService: FilmesService
@@ -19,9 +21,14 @@ export class ListagemFilmesComponent implements OnInit {
     this.listarFilmes();
   }
 
-  listarFilmes() {
-    this.filemService.listar().subscribe((filmes: Filme[]) => {
-      this.filmes = filmes;
+  private listarFilmes() {
+    this.pagina++;
+    this.filemService.listar(this.pagina, this.itensPorPagina).subscribe((filmes: Filme[]) => {
+      this.filmes.push(...filmes);
     });
+  }
+
+  onScroll(): void {
+    this.listarFilmes();
   }
 }
