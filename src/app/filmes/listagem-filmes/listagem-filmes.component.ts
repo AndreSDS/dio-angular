@@ -2,6 +2,8 @@ import { Filme } from './../../shared/models/filme';
 import { FilmesService } from './../../core/filmes.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { pipe } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'dio-listagem-filmes',
@@ -12,6 +14,8 @@ export class ListagemFilmesComponent implements OnInit {
 
   filmes: Filme[] = [];
   pagina = 0;
+  nomedoFilme: string;
+  genero: string;
   readonly itensPorPagina = 4;
   filtrosListagem: FormGroup;
   generos: Array<string>;
@@ -27,6 +31,16 @@ export class ListagemFilmesComponent implements OnInit {
       genero: ['']
     });
 
+    this.filtrosListagem.get('texto').valueChanges.pipe(take(1)).subscribe((val: string) => {
+      this.nomedoFilme = val;
+      this.resetarConsulta();
+    });
+
+    this.filtrosListagem.get('genero').valueChanges.pipe(take(1)).subscribe((val: string) => {
+      this.genero = val;
+      this.resetarConsulta();
+    });
+
     this.generos = ['Ação', 'Romance', 'Terror', 'Aventura', 'Ficção científica', 'Comédia', 'Drama'];
 
     this.listarFilmes();
@@ -34,9 +48,15 @@ export class ListagemFilmesComponent implements OnInit {
 
   private listarFilmes() {
     this.pagina++;
-    this.filemService.listar(this.pagina, this.itensPorPagina).subscribe((filmes: Filme[]) => {
+    this.filemService.listar(this.pagina, this.itensPorPagina, this.nomedoFilme, this.genero).subscribe((filmes: Filme[]) => {
       this.filmes.push(...filmes);
     });
+  }
+
+  private resetarConsulta(): void {
+    this.pagina = 0;
+    this.filmes = [];
+    this.listarFilmes();
   }
 
   onScroll(): void {
