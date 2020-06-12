@@ -9,8 +9,9 @@ import { Filme } from "src/app/shared/models/filme";
   styleUrls: ["./visualizar-filme.component.scss"]
 })
 export class VisualizarFilmeComponent implements OnInit {
-  filme: Filme;
+  filmes: Filme;
   id = this.activateRoute.snapshot.params["id"];
+  readonly semFoto: string;
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -23,7 +24,7 @@ export class VisualizarFilmeComponent implements OnInit {
 
   private visualizar(id: number): void {
     this.filmesService.visualizar(id).subscribe((filme: Filme) => {
-      this.filme = filme;
+      this.filmes = filme;
     });
   }
 }
