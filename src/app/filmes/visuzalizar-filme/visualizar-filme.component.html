@@ -1,1 +1,14 @@
-<h1>Works</h1>
+<mat-list *ngIf="filmes">
+  <mat-list-item> Título: {{ filmes.titulo }} </mat-list-item>
+  <mat-list-item>
+    Data de lançamento: {{ filmes.dtLancamento || date: 'dd/MM/yyyy' }}
+  </mat-list-item>
+  <mat-list-item> Nota: {{ filmes.nota }} </mat-list-item>
+  <mat-list-item>
+    <a [href]="filme.urlIMDb"
+      ><img [src]="filmes.urlFoto || semFoto" [alt]="filmes.titulo" />
+    </a>
+  </mat-list-item>
+  <mat-list-item> Gênero: {{ filmes.genero }} </mat-list-item>
+  <mat-list-item> Descrição: {{ filmes.descricao }} </mat-list-item>
+</mat-list>
