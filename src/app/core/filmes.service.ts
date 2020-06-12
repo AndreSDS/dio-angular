@@ -6,13 +6,12 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { Filme } from './../shared/models/filme';
 
-const url = 'http://localhost:3000/filmes/';
+const url = "http://localhost:3000/filmes/";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class FilmesService {
-
   constructor( 
     private http: HttpClient,
     private configParamsService: ConfigParamsService
@@ -25,5 +24,9 @@ export class FilmesService {
   listar(config: Configparams): Observable<Filme[]> {
     const configParams = this.configParamsService.configureParams(config);
     return this.http.get<Filme[]>(url, { params: configParams });
+  }
+
+  visualizar(id: number): Observable<Filme> {
+    return this.http.get<Filme>(url + id);
   }
 }

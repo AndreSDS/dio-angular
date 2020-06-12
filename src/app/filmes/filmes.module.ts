@@ -1,11 +1,12 @@
-import { CamposModule } from './../shared/components/campos/campos.module';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { MaterialModule } from '../shared/material/material.module';
-import { CadastroFilmesComponent } from './cadastro-filmes/cadastro-filmes.component';
-import { ListagemFilmesComponent } from './listagem-filmes/listagem-filmes.component';
+import { CamposModule } from "./../shared/components/campos/campos.module";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
+import { MaterialModule } from "../shared/material/material.module";
+import { CadastroFilmesComponent } from "./cadastro-filmes/cadastro-filmes.component";
+import { ListagemFilmesComponent } from "./listagem-filmes/listagem-filmes.component";
+import { VisualizarFilmeComponent } from "./visuzalizar-filme/visualizar-filme.component";
 
 @NgModule({
   imports: [
@@ -16,7 +17,11 @@ import { ListagemFilmesComponent } from './listagem-filmes/listagem-filmes.compo
     CamposModule,
     InfiniteScrollModule
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  declarations: [CadastroFilmesComponent, ListagemFilmesComponent]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  declarations: [
+    CadastroFilmesComponent,
+    ListagemFilmesComponent,
+    VisualizarFilmeComponent
+  ]
 })
-export class FilmesModule { }
+export class FilmesModule {}
