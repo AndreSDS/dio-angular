@@ -99,16 +99,6 @@
       "urlIMDb": "https://www.imdb.com/title/tt1618434/",
       "genero": "Comédia",
       "id": 10
-    },
-    {
-      "titulo": "Filme sem descrição",
-      "urlFoto": "",
-      "dtLancamento": "2020-06-09T03:00:00.000Z",
-      "descricao": "",
-      "nota": 10,
-      "urlIMDb": "",
-      "genero": "Romance",
-      "id": 11
     }
   ]
 }

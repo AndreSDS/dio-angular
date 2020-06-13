@@ -6,10 +6,10 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { Filme } from './../shared/models/filme';
 
-const url = "http://localhost:3000/filmes/";
+const url = 'http://localhost:3000/filmes/';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class FilmesService {
   constructor( 
@@ -28,5 +28,9 @@ export class FilmesService {
 
   visualizar(id: number): Observable<Filme> {
     return this.http.get<Filme>(url + id);
+  }
+
+  excluir(id: number): Observable<void>{
+    return this.http.delete<void>(url + id);
   }
 }
