@@ -12,7 +12,7 @@ const url = 'http://localhost:3000/filmes/';
   providedIn: 'root'
 })
 export class FilmesService {
-  constructor( 
+  constructor(
     private http: HttpClient,
     private configParamsService: ConfigParamsService
 ) { }
@@ -30,7 +30,11 @@ export class FilmesService {
     return this.http.get<Filme>(url + id);
   }
 
-  excluir(id: number): Observable<void>{
+  excluir(id: number): Observable<void> {
     return this.http.delete<void>(url + id);
+  }
+
+  editar(filme: Filme): Observable<Filme> {
+    return this.http.put<Filme>(url + filme.id, filme);
   }
 }
