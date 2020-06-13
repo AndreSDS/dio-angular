@@ -1,0 +1,16 @@
+<mat-list>
+  <mat-list-item>Título: {{ filme.titulo }} </mat-list-item>
+  <mat-list-item
+    >Data: {{ filme.dtLancamento | date: "dd/MM/yyy" }}
+  </mat-list-item>
+  <mat-list-item> {{ filme.genero }} </mat-list-item>
+  <mat-list-item> {{ filme.descricao }} </mat-list-item>
+  <mat-list-item>Nota: {{ filme.nota }} </mat-list-item>
+  <a [href]="filme.urlIMDb" target="_blank" >
+    <img mat-card-image [src]="filme.urlFoto || semFoto" alt="" />
+  </a>
+</mat-list>
+
+<ng-template #semFilmes>
+  <h1>Nenhum filme encontrado.</h1>
+</ng-template>

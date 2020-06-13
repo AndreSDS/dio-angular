@@ -1,10 +1,10 @@
+import { Router } from '@angular/router';
 import { Configparams } from './../../shared/models/configparams';
 import { Filme } from './../../shared/models/filme';
 import { FilmesService } from './../../core/filmes.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { pipe } from 'rxjs';
-import { take, debounceTime } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'dio-listagem-filmes',
@@ -24,7 +24,8 @@ export class ListagemFilmesComponent implements OnInit {
 
   constructor(
     private filemService: FilmesService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -53,6 +54,14 @@ export class ListagemFilmesComponent implements OnInit {
     this.listarFilmes();
   }
 
+  abrir(id: number): void {
+    this.router.navigateByUrl(`/filmes/${id}`);
+  }
+
+  onScroll(): void {
+    this.listarFilmes();
+  }
+
   private listarFilmes() {
     this.config.pagina++;
     this.filemService.listar(this.config).subscribe((filmes: Filme[]) => {
@@ -66,7 +75,4 @@ export class ListagemFilmesComponent implements OnInit {
     this.listarFilmes();
   }
 
-  onScroll(): void {
-    this.listarFilmes();
-  }
 }
