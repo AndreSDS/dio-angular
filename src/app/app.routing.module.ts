@@ -1,3 +1,4 @@
+import { VisualizarComponent } from './filmes/visualizar/visualizar.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FilmesModule } from './filmes/filmes.module';
@@ -17,6 +18,11 @@ const routes: Routes = [
       {
         path: '',
         component: ListagemFilmesComponent
+      },
+      {
+        path: ':id',
+        component: VisualizarComponent,
+        pathMatch: 'full'
       },
       {
         path: 'cadastro',
